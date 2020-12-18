@@ -7,25 +7,29 @@ function Result(props) {
     <li key={props.movie.imbdID}>
       <div className="result">
         <p>
-          {props.movie.Title}, {props.movie.Year}
+          <i>{props.movie.Title}</i>, {props.movie.Year}
         </p>
-        <button
-          disabled={
-            (props.nominees.includes(props.movie) || props.nominees.length === 5) && props.type === "result" 
-                ? true 
+        <div className="button-container">
+          <button
+            disabled={
+              (props.nominees.includes(props.movie) ||
+                props.nominees.length === 5) &&
+              props.type === "result"
+                ? true
                 : false
-          }
-          onClick={() => {
-            props.type === "result"
-              ? props.nominateMovie(props.movie)
-              : props.removeMovie(props.movie);
-          }}
-        >
-          {props.type === "result" ? "Nominate" : "Remove"}
-        </button>
+            }
+            onClick={() => {
+              props.type === "result"
+                ? props.nominateMovie(props.movie)
+                : props.removeMovie(props.movie);
+            }}
+          >
+            {props.type === "result" ? "Nominate" : "Remove"}
+          </button>
+        </div>
       </div>
     </li>
-  )
+  );
 }
 const mapStateToProps = (state) => ({ nominees: state.nominatedMovies });
 

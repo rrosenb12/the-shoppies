@@ -24,11 +24,11 @@ class App extends React.Component {
         <h1 className="title-header">The Shoppies</h1>
         <Search handleSearch={this.handleSearch}/>
       </div>
+      {this.props.nominees.length === 5 && <div className="banner">you have reached your nominee limit</div>}
       <div className="main-body">
         <ResultsContainer searchTerm={this.state.searchTerm}/>
         <NomineesContainer />
       </div>
-      {this.props.nominees.length === 5 && <span>you have reached your nominee limit</span>}
     </div>
   )};
 }

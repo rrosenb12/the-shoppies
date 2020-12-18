@@ -11,6 +11,7 @@ html {
 body {
     width: 100vw;
     height: 100vh;
+    overflow-y: hidden;
 }
 
 .app {
@@ -22,9 +23,30 @@ body {
     margin-top: 2%;
 }
 
+.app .banner {
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    text-align: center;
+}
+
 .result {
     width: 100%;
     display: flex;
+}
+
+.result p {
+    width: 50%;
+}
+
+.result .button-container {
+    width: 50%;
+    margin: 1%;
+}
+
+.result .button-container button {
+    width: 75%;
+    height: 3em;
 }
 
 /* Top of Page Styling */
@@ -55,10 +77,11 @@ body {
 
 .app .main-body {
     width: 100%;
-    height: 100%;
+    height: 30em;
     display: flex;
     margin-top: 2%;
     border: 1px solid black;
+    overflow-y: scroll;
 }
 
 .app .main-body .results-container {
