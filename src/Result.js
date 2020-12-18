@@ -1,20 +1,32 @@
-import React from "react"
-import {connect} from "react-redux"
-import {nominateMovie} from "./movieActions"
+import React from "react";
+import { connect } from "react-redux";
+import { nominateMovie, removeMovie } from "./movieActions";
 
-function Result(props){
-    return(
-        <div key={props.movie.imbdID}>
-            <p>{props.movie.Title}</p>
-            <p>{props.movie.Year}</p>
-            <button 
-                disabled={props.nominees.includes(props.movie) || props.nominees.length === 5 ? true : false}
-                onClick={() => {
-                    props.nominateMovie(props.movie)
-                }}>Nominate</button>
-        </div>
-    )
+function Result(props) {
+  return (
+    <li key={props.movie.imbdID}>
+      <div className="result">
+        <p>
+          {props.movie.Title}, {props.movie.Year}
+        </p>
+        <button
+          disabled={
+            (props.nominees.includes(props.movie) || props.nominees.length === 5) && props.type === "result" 
+                ? true 
+                : false
+          }
+          onClick={() => {
+            props.type === "result"
+              ? props.nominateMovie(props.movie)
+              : props.removeMovie(props.movie);
+          }}
+        >
+          {props.type === "result" ? "Nominate" : "Remove"}
+        </button>
+      </div>
+    </li>
+  )
 }
-const mapStateToProps = state => ({nominees: state.nominatedMovies})
+const mapStateToProps = (state) => ({ nominees: state.nominatedMovies });
 
-export default connect(mapStateToProps, {nominateMovie})(Result)
+export default connect(mapStateToProps, { nominateMovie, removeMovie })(Result);

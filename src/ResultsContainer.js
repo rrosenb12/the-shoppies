@@ -4,9 +4,9 @@ import Result from "./Result"
 
 function resultsContainer(props){
     return(
-        <div>
-            {props.searchTerm === "" ? <h1>Search for Movies</h1> : <h1>Results for {props.searchTerm}</h1>}
-            {props.searchTerm !== "" && props.moviesArray.map(movie => <Result key={movie.imbdID} movie={movie}/>)}
+        <div className="results-container">
+            {props.searchTerm === "" ? <h3>Movies you search for will appear here</h3> : <h3>Results for "{props.searchTerm}"</h3>}
+            {props.searchTerm !== "" && props.moviesArray.map(movie => <ul><Result type="result" key={movie.imbdID} movie={movie}/></ul>)}
         </div>
     )
 }

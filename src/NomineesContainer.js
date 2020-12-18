@@ -1,13 +1,15 @@
 import React from "react"
 import {connect} from "react-redux"
-import Nominee from "./Nominee"
+import Result from "./Result"
 
 function NomineesContainer(props){
     return(
-        <ul>
-            Nominations
-            {props.nominees.length !== 0 && props.nominees.map(nominee => <Nominee key={nominee.imbdID} nominee={nominee}/>)}
-        </ul>
+        <div className="nomination-container">
+            {props.nominees.length !== 0 ? <h3>Nominations</h3> : <h3>Movies you nominate will appear here</h3>}
+            <ol>
+                {props.nominees.length !== 0 && props.nominees.map(nominee => <Result type="nominee" key={nominee.imbdID} movie={nominee}/>)}
+            </ol>
+        </div>
     )
 }
 
